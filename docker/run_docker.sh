@@ -8,7 +8,7 @@ DEFAULT_DATA_DIR="$SCRIPT_DIR/omnigibson_data"
 DATA_PATH=${1:-$DEFAULT_DATA_DIR}
 
 ICD_PATH="/usr/share/vulkan/icd.d/nvidia_icd.json"
-LAYERS_PATH="/usr/share/vulkan/icd.d/nvidia_layers.json"
+LAYERS_PATH="/usr/share/vulkan/implicit_layer.d/nvidia_layers.json"
 EGL_VENDOR_PATH="/usr/share/glvnd/egl_vendor.d/10_nvidia.json"
 
 # Assert the presence of relevant Vulkan files
@@ -22,8 +22,8 @@ if [ ! -e "$ICD_PATH" ]; then
 fi 
 if [ ! -e "$LAYERS_PATH" ]; then
     echo "Missing ${LAYERS_PATH} file."
-    echo "(default path: /usr/share/vulkan/icd.d/nvidia_layers.json)";
-    echo "In some distributions this file will be at /etc/vulkan/implicit_layer.d/";
+    echo "(default path: /usr/share/vulkan/implicit_layer.d/nvidia_layers.json)";
+    echo "In some distributions this file will be at /etc/vulkan/implicit_layer.d/ or /usr/share/vulkan/icd.d/";
     echo "Consider updating your driver to 525 if you cannot find the file.";
     echo "To continue update the file path at the top of the run_docker.sh file and retry";
     exit;
