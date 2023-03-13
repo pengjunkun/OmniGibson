@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#in subshell, some conda commands may not be exported (e.g., activate). Exported mannually
+source "$(conda info | grep -i 'base environment' | awk '{print $4}')/etc/profile.d/conda.sh"
+
 # Make sure that the ISAAC_SIM_PATH variable is set
 if [ x"${ISAAC_SIM_PATH}" == "x" ]; then
   echo "Please set ISAAC_SIM_PATH!"
